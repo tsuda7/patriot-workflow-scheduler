@@ -1,53 +1,149 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Job Configuration DSL (PBC) &mdash; patriot-workflow-scheduler 0.7.2 documentation</title>
-    
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.7.2',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="patriot-workflow-scheduler 0.7.2 documentation" href="index.html" />
-    <link rel="next" title="CLI tools" href="cli.html" />
-    <link rel="prev" title="Architecture" href="arch.html" /> 
-  </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="cli.html" title="CLI tools"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="arch.html" title="Architecture"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">patriot-workflow-scheduler 0.7.2 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Job Configuration DSL (PBC) &mdash; patriot-workflow-scheduler 0.7.2 documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="patriot-workflow-scheduler 0.7.2 documentation" href="index.html"/>
+        <link rel="next" title="CLI tools" href="cli.html"/>
+        <link rel="prev" title="Architecture" href="arch.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> patriot-workflow-scheduler
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Job Configuration DSL (PBC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-dependency">Configuring Dependency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simplifying-configurations-using-job-groups">Simplifying Configurations Using Job Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementing-and-using-custom-commands">Implementing and Using Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-configuration-options">Other Configuration Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#priority">Priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skip-suspend">Skip / Suspend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limiting-node-host">Limiting Node/Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#retry">Retry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mail-notification">Mail Notification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Web Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">System Configuration</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">patriot-workflow-scheduler</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Job Configuration DSL (PBC)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/pbc.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="job-configuration-dsl-pbc">
 <h1>Job Configuration DSL (PBC)<a class="headerlink" href="#job-configuration-dsl-pbc" title="Permalink to this headline">¶</a></h1>
@@ -58,22 +154,22 @@ PBC enables us to write common key values in one space and simplifies
 batch configurations.
 In addition, the DSL are designed to be extensible, so that new commands can be incorporated.</p>
 <p>The below is a &#8216;Hello World&#8217; example.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="sx">% cat </span><span class="nb">test</span><span class="o">.</span><span class="n">pbc</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="sx">% cat </span><span class="nb">test</span><span class="o">.</span><span class="n">pbc</span>
 <span class="n">sh</span><span class="p">{</span>
   <span class="nb">name</span> <span class="s1">&#39;test&#39;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;echo &#39;hello world&#39; &gt; /tmp/out.txt&quot;</span><span class="o">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>% ./bin/patriot execute 2015-04-01 test.pbc
-% cat /tmp/out.txt
-hello world
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">patriot</span> <span class="n">execute</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">01</span> <span class="n">test</span><span class="o">.</span><span class="n">pbc</span>
+<span class="o">%</span> <span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">out</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">hello</span> <span class="n">world</span>
 </pre></div>
 </div>
 <p>The initial target of this scheduler is daily batch jobs and the script takes a date (or range of dates) as an argument.
 The date given as the argument can be used via the variable &#8216;_date_&#8217;.
 For instance,</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="sx">% cat </span><span class="nb">test</span><span class="o">.</span><span class="n">pbc</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="sx">% cat </span><span class="nb">test</span><span class="o">.</span><span class="n">pbc</span>
 <span class="n">sh</span><span class="p">{</span>
   <span class="nb">name</span> <span class="s1">&#39;test&#39;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;echo &#39;hello world (</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="s2">)&#39; &gt; /tmp/out.txt&quot;</span><span class="o">]</span>
@@ -89,7 +185,7 @@ For instance,</p>
 <p>Consider above workflow as an example, in which the SELECT statement
 should be executed after two LOAD statements.</p>
 <p>This workflow can be defined in PBC as follows.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">sh</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="p">{</span>
   <span class="n">produce</span> <span class="o">[</span><span class="s2">&quot;table_</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">]</span>
   <span class="nb">name</span> <span class="s2">&quot;load1_</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="s2">&quot;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;hive -e &#39;LOAD DATA INPATH </span><span class="se">\&#39;</span><span class="s2">path_to_source1</span><span class="se">\&#39;</span><span class="s2"> INTO TABLE table PARTITION (dt = </span><span class="se">\&#39;</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="se">\&#39;</span><span class="s2">, type = </span><span class="se">\&#39;</span><span class="s2">1</span><span class="se">\&#39;</span><span class="s2">)&quot;</span><span class="o">]</span>
@@ -113,7 +209,7 @@ should be executed after two LOAD statements.</p>
 <h2>Simplifying Configurations Using Job Groups<a class="headerlink" href="#simplifying-configurations-using-job-groups" title="Permalink to this headline">¶</a></h2>
 <p>In the above example, the two LOAD jobs have same product.
 This can be consolidated by using job_group as follows.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">job_group</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">job_group</span><span class="p">{</span>
   <span class="n">produce</span> <span class="o">[</span><span class="s2">&quot;table_</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">]</span>
   <span class="n">sh</span><span class="p">{</span>
     <span class="nb">name</span> <span class="s2">&quot;load1_</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -133,7 +229,7 @@ This can be consolidated by using job_group as follows.</p>
 </pre></div>
 </div>
 <p>Since PBC is an Ruby-internal DSL, this example can be written more concisely.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">job_group</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">job_group</span><span class="p">{</span>
   <span class="n">produce</span> <span class="o">[</span><span class="s2">&quot;table_</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">]</span>
   <span class="o">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
     <span class="n">sh</span><span class="p">{</span>
@@ -165,7 +261,7 @@ The three methods are</p>
 </ul>
 <p>The command name is an expression used in the PBC and the attributes are used for implementing the above methods. The command name and the attributes can be set by using class macros, <strong>declare_command_name</strong> and <strong>command_attr</strong>, respectively.</p>
 <p>Below is a custom command example which executes a Hive LOAD statement.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="c1"># written in hive_load_command.rb</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># written in hive_load_command.rb</span>
 <span class="k">class</span> <span class="nc">HiveLoadCommand</span> <span class="o">&lt;</span> <span class="no">Patriot</span><span class="o">::</span><span class="no">Command</span><span class="o">::</span><span class="no">Base</span>
   <span class="c1"># define command name</span>
   <span class="n">declare_command_name</span> <span class="ss">:hive_load</span>
@@ -203,7 +299,7 @@ The three methods are</p>
 </pre></div>
 </div>
 <p>Assuming the results of the SELECT statement needs to be stored other database (e.g. relational database or key-value store), a command for the such jobs could be like below.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="c1"># written in hive2db_command.rb</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="c1"># written in hive2db_command.rb</span>
 <span class="k">class</span> <span class="nc">Hive2DBCommand</span> <span class="o">&lt;</span> <span class="no">Patriot</span><span class="o">::</span><span class="no">Command</span><span class="o">::</span><span class="no">Base</span>
   <span class="c1"># define command name</span>
   <span class="n">declare_command_name</span> <span class="ss">:hive2db</span>
@@ -238,7 +334,7 @@ The three methods are</p>
 </pre></div>
 </div>
 <p>These command can be integrated by putting file in the plugins directory and set init.rb and patriot.ini to load the commands.</p>
-<div class="highlight-python"><div class="highlight"><pre>mkdir -p ${INSTALL_DIR}/plugins/my_custom_commands/lib
+<div class="highlight-python3"><div class="highlight"><pre><span></span>mkdir -p ${INSTALL_DIR}/plugins/my_custom_commands/lib
 cp hive_load_command.rb ${INSTALL_DIR}/plugins/my_custom_commands/lib
 cp hive2db_command.rb ${INSTALL_DIR}/plugins/my_custom_commands/lib
 vi ${INSTALL_DIR}/plugins/my_custom_commands/init.rb
@@ -254,7 +350,7 @@ plugins=my_custom_commands,patriot-mysql2-client
 </pre></div>
 </div>
 <p>By using the custom commands, the configurations can be written as below.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">job_group</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">job_group</span><span class="p">{</span>
   <span class="n">produce</span> <span class="o">[</span><span class="s2">&quot;table_</span><span class="si">#{</span><span class="n">_date_</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">]</span>
   <span class="o">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
     <span class="n">hive_load</span><span class="p">{</span>
@@ -282,7 +378,7 @@ plugins=my_custom_commands,patriot-mysql2-client
 <p>Priority can be set by using <em>priority</em> in each job or job group.
 Jobs in JobStore are sorted by the priority in ascending order.
 Therefore, jobs with lower priority value are preferentially fetched.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">sh</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="p">{</span>
   <span class="n">priority</span> <span class="mi">0</span>
   <span class="nb">name</span> <span class="s1">&#39;high&#39;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;echo &#39;higher priority&#39;&quot;</span><span class="o">]</span>
@@ -299,7 +395,7 @@ Therefore, jobs with lower priority value are preferentially fetched.</p>
 <h3>Skip / Suspend<a class="headerlink" href="#skip-suspend" title="Permalink to this headline">¶</a></h3>
 <p>Jobs can be skipped or suspended when they should not be executed automatically.
 Each state can be set by putting <em>skip</em> or <em>suspend</em>, respectively</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">sh</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="p">{</span>
   <span class="n">skip</span>
   <span class="nb">name</span> <span class="s1">&#39;skip&#39;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;echo &#39;skipped&#39;&quot;</span><span class="o">]</span>
@@ -316,8 +412,8 @@ Each state can be set by putting <em>skip</em> or <em>suspend</em>, respectively
 <h3>Limiting Node/Host<a class="headerlink" href="#limiting-node-host" title="Permalink to this headline">¶</a></h3>
 <p>When a job should be run on a certain host, this can be achieved by setting <em>exec_host</em> or <em>exec_node</em>.
 The <em>exec_host</em> limits the host where the job is executed (limited by hostname).
-Jobs with <em>exec_node</em> are only executed by threads labeled with the configured labels (see <a class="reference internal" href="config.html"><em>system configuration</em></a>).</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">sh</span><span class="p">{</span>
+Jobs with <em>exec_node</em> are only executed by threads labeled with the configured labels (see <a class="reference internal" href="config.html"><span class="doc">system configuration</span></a>).</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="p">{</span>
   <span class="n">exec_host</span> <span class="s1">&#39;hosts1&#39;</span>
   <span class="nb">name</span> <span class="s1">&#39;host&#39;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;echo &#39;executed on host1&#39;&quot;</span><span class="o">]</span>
@@ -334,7 +430,7 @@ Jobs with <em>exec_node</em> are only executed by threads labeled with the confi
 <h3>Retry<a class="headerlink" href="#retry" title="Permalink to this headline">¶</a></h3>
 <p>Jobs can be configured to be retried in case of a failure.
 In the retry configuration, retry interval and the number of retries can be configured.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">sh</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="p">{</span>
   <span class="n">retrial</span> <span class="s1">&#39;count&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;interval&#39;</span> <span class="o">=&gt;</span> <span class="mi">3600</span>
   <span class="nb">name</span> <span class="s1">&#39;retry&#39;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;echo &#39;retry 3 time at intervals of 1 hour&#39;&quot;</span><span class="o">]</span>
@@ -346,7 +442,7 @@ In the retry configuration, retry interval and the number of retries can be conf
 <h3>Mail Notification<a class="headerlink" href="#mail-notification" title="Permalink to this headline">¶</a></h3>
 <p>To send a mail when a job finished, <em>mail_notification</em> should be set to the job.
 For using this functionality, SMTP should be configured on the host where the worker process is running.</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="n">sh</span><span class="p">{</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="p">{</span>
   <span class="n">mail_notification</span> <span class="s1">&#39;to&#39;</span> <span class="o">=&gt;</span> <span class="nb">test</span><span class="vi">@test</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;failed&#39;</span>
   <span class="nb">name</span> <span class="s1">&#39;mail&#39;</span>
   <span class="n">commands</span> <span class="o">[</span><span class="s2">&quot;echo &#39;notify failure&#39;&quot;</span><span class="o">]</span>
@@ -363,77 +459,71 @@ For using this functionality, SMTP should be configured on the host where the wo
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Job Configuration DSL (PBC)</a><ul>
-<li><a class="reference internal" href="#configuring-dependency">Configuring Dependency</a></li>
-<li><a class="reference internal" href="#simplifying-configurations-using-job-groups">Simplifying Configurations Using Job Groups</a></li>
-<li><a class="reference internal" href="#implementing-and-using-custom-commands">Implementing and Using Custom Commands</a></li>
-<li><a class="reference internal" href="#other-configuration-options">Other Configuration Options</a><ul>
-<li><a class="reference internal" href="#priority">Priority</a></li>
-<li><a class="reference internal" href="#skip-suspend">Skip / Suspend</a></li>
-<li><a class="reference internal" href="#limiting-node-host">Limiting Node/Host</a></li>
-<li><a class="reference internal" href="#retry">Retry</a></li>
-<li><a class="reference internal" href="#mail-notification">Mail Notification</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cli.html" class="btn btn-neutral float-right" title="CLI tools" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="arch.html" class="btn btn-neutral" title="Architecture" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="arch.html"
-                        title="previous chapter">Architecture</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cli.html"
-                        title="next chapter">CLI tools</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/pbc.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Cyberagent, Inc..
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="cli.html" title="CLI tools"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="arch.html" title="Architecture"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">patriot-workflow-scheduler 0.7.2 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Cyberagent, Inc..
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.7.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
